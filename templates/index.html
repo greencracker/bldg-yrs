@@ -11,17 +11,9 @@
     <body>
         <div>
         	<h1>DRAFT</h1>
-        	{{ object_list }}
-        	<table border=1 cellpadding=7>
-            	<tr>
-                	<th>Name</th>
-            	</tr>
-            		{% for obj in object_list %}
-            	<tr>
-                	<td>{{ obj.name }}</td>
-            	</tr>
-            	{% endfor %}
-        	</table>
+        		<p>Atlanta's young, as far as cities go. It was founded Dec. 29, 1847. </p>
+        		<p>Not long after the Civil War, Atlanta started to grow outward from Downtown. Use the filters on the right to see what was built in which decade. Or click on an individual building to see when it was built.</p>
+        		<p>Despite its young age, Atlanta still has some must-see architecture. We asked **** for what they would show visitos and pinned those on the map.</p>
         </div>
         <div id="map" style="width:100%; height:300px;">
         	<aside class="layers">
@@ -138,7 +130,7 @@
              				</div>
                			<div class="cartodb-popup-content">
                   			<h4>Year built </h4>
-                  			<p>{{comments}}</p>
+                  			<p>{{ comments }}</p>
                			</div>
            		</div>
          		<div class="cartodb-popup-tip-container"></div>
@@ -162,6 +154,44 @@
 		        var basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 		            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 		        }).addTo(map);
+
+
+		        // add the pins 
+
+		        // var marker = L.marker([33.75,-84.4]).addTo(map);
+		        // var marker2 = L.marker([33.76,-84.39]).addTo(map);
+
+		        var pins = {
+		              "type": "FeatureCollection",
+		              "features": [
+		                {% for obj in object_list %}
+		                {
+		                  "type": "Feature",
+		                  "properties": {
+		                    "full_name": "{{ obj.name }}",
+		                    "id": "{{ obj.id }}"
+		                  },
+		                  "geometry": {
+		                    "type": "Point",
+		                    "coordinates": [{{ obj.x }}, {{ obj.y }}]
+		                  }
+		                }{% if not loop.last %},{% endif %}
+		                {% endfor %}
+		              ]
+		            };
+		        // console.log(pins)
+		        // console.log(typeof(pins))
+
+		        var dataLayer = L.geoJson(pins , {
+		        	onEachFeature: function(feature, layer) {
+                    layer.bindPopup(feature.properties.name);
+                	}
+            	});
+            	map.addLayer(dataLayer);
+		        
+            	L.geoJson(pins).addTo(map);
+
+		        // L.geoJSON(pins).addTo(map);
 
 		        // Layers definition
 		        var layers = {
