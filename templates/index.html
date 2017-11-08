@@ -5,8 +5,10 @@
         <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="stylesheet" href="style.css"> -->
+
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" />
         <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
     </head>
     <body>
         <div>
@@ -139,7 +141,7 @@
 
     		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 
-    		<script>
+    		<script type="text/javascript">
 
       			$( document ).ready(function() {
 
@@ -159,39 +161,18 @@
 		        // add the pins 
 
 		        // var marker = L.marker([33.75,-84.4]).addTo(map);
-		        // var marker2 = L.marker([33.76,-84.39]).addTo(map);
 
-		        var pins = {
-		              "type": "FeatureCollection",
-		              "features": [
-		                {% for obj in object_list %}
-		                {
-		                  "type": "Feature",
-		                  "properties": {
-		                    "full_name": "{{ obj.name }}",
-		                    "id": "{{ obj.id }}"
-		                  },
-		                  "geometry": {
-		                    "type": "Point",
-		                    "coordinates": [{{ obj.x }}, {{ obj.y }}]
-		                  }
-		                }{% if not loop.last %},{% endif %}
-		                {% endfor %}
-		              ]
-		            };
-		        // console.log(pins)
-		        // console.log(typeof(pins))
+		        // marker.bindPopup("<b>Hello world!</b><br><a href='http://www.google.com'> I am a popup.</a>");
 
-		        var dataLayer = L.geoJson(pins , {
-		        	onEachFeature: function(feature, layer) {
-                    layer.bindPopup(feature.properties.name);
-                	}
-            	});
-            	map.addLayer(dataLayer);
-		        
-            	L.geoJson(pins).addTo(map);
+		        {% for obj in object_list %}
+		        	var marker = L.marker([ {{ obj.x }}, {{ obj.y }}]).addTo(map);
+		        	marker.bindPopup(
+                        '<a href="{{ obj.id }}/">{{ obj.name }}</a>'
+                    );
 
-		        // L.geoJSON(pins).addTo(map);
+		        {% endfor %}
+
+
 
 		        // Layers definition
 		        var layers = {
