@@ -1,6 +1,293 @@
 <html lang="en">
-    <head></head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" />
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    </head>
     <body>
-        <h1>DRAFT</h1>
+        <div><h1>DRAFT</h1></div>
+        <div id="map" style="width:100%; height:300px;">
+        	<aside class="layers">
+        		<h2>Filter:</h2>
+			    <ul>
+			    	<li class="layer">
+				        <span class="custom-checkbox">
+				        	<input type="checkbox" id="all_years" name="layer" checked>
+				          	<span class="box" style="background-color:lightgray;">
+				            	<span class="tick">
+				            	</span>
+				          	</span>
+				        </span>All Years
+			      	</li>
+
+
+			      	<li class="layer">
+				        <span class="custom-checkbox">
+				         	<input type="checkbox" id="before_1900" name="layer">
+				          	<span class="box" style="background-color:#9e0142;">
+				            	<span class="tick">
+				            	</span>
+				          	</span>
+				        </span>Pre-1900
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          	<input type="checkbox" id="l_1900_1919" name="layer">
+			          		<span class="box" style="background-color:#f46d43;">
+			            		<span class="tick">
+			            		</span>
+			         		</span>
+			        	</span>1900-1919
+			      	</li>
+
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          	<input type="checkbox" id="l_1920_1939" name="layer">
+			          		<span class="box" style="background-color:#fdae61;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>1920-1939
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          	<input type="checkbox" id="l_1940_1959" name="layer">
+			          		<span class="box" style="background-color:#e6f598;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>1940-1959
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          	<input type="checkbox" id="l_1960_1979" name="layer">
+			          		<span class="box" style="background-color:#66c2a5;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>1960-1979
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          	<input type="checkbox" id="l_1980_1999" name="layer">
+			          		<span class="box" style="background-color:#3288bd;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>1980-1999
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          		<input type="checkbox" id="l_2000_2015" name="layer">
+			          		<span class="box" style="background-color:#5e4fa2;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>2000-2015
+			      	</li>
+
+			      	<li class="layer">
+			        	<span class="custom-checkbox">
+			          		<input type="checkbox" id="no_data" name="layer">
+			          		<span class="box" style="background-color:#696969;">
+			            		<span class="tick">
+			            		</span>
+			          		</span>
+			        	</span>No data
+			      	</li>
+
+			      	<li>
+			        	<!-- Need full path here? -->
+			        	<a href="sources.html">FAQ & Sources</a>
+			      	</li>
+
+			    </ul>
+	      	</aside>
+
+	      	<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.14/cartodb.js">
+      		</script>	
+
+      		<script type="infowindow/html" id="infowindow_template">
+      			<div class="cartodb-popup v2" style="max-width:100px">
+        			<a href="#close" class="cartodb-popup-close-button close">x</a>
+         				<div class="cartodb-popup-content-wrapper">
+           					<div class="cartodb-popup-header">
+             				</div>
+               			<div class="cartodb-popup-content">
+                  			<h4>Year built </h4>
+                  			<p>{{comments}}</p>
+               			</div>
+           		</div>
+         		<div class="cartodb-popup-tip-container"></div>
+      			</div>
+    		</script>
+
+    		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+    		<script>
+
+      			$( document ).ready(function() {
+
+		        //Create the leaflet map
+		        var map = L.map('map', {
+		            zoomControl: true,
+		            fullscreenControl: true,
+		            center: [33.75,-84.4],
+		            zoom: 13
+		        });
+
+		        var basemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+		            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+		        }).addTo(map);
+
+		        // Layers definition
+		        var layers = {
+		          'all_years': {
+		            sql: 'SELECT * FROM building_footprints_small',
+		            cartocss: '#layer{polygon-fill: #696969;}#layer[yearbuilt < 1900] {polygon-fill: #9e0142;}#layer[yearbuilt >= 1900][yearbuilt <= 1919] {polygon-fill: #f46d43;}#layer[yearbuilt >= 1920][yearbuilt <= 1939] {polygon-fill: #fdae61;}#layer[yearbuilt >= 1940][yearbuilt <= 1959] {polygon-fill: #e6f598;}#layer[yearbuilt >= 1960][yearbuilt <= 1979] {polygon-fill: #66c2a5;}#layer[yearbuilt >= 1980][yearbuilt <= 1999] {polygon-fill: #3288bd;}#layer[yearbuilt >= 2000] {polygon-fill: #5e4fa2;}'
+		          },
+		          'before_1900': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt < 1900)',
+		            cartocss: '#layer{polygon-fill: #9e0142; opacity:0.9;}'
+		          },
+		          'l_1900_1919': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1900 AND yearbuilt <= 1919)',
+		            cartocss: '#layer{polygon-fill: #f46d43; opacity:0.9;}'
+		          },
+		          'l_1920_1939': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1920 AND yearbuilt <= 1939)',
+		            cartocss: '#layer{polygon-fill: #fdae61; opacity:0.9;}'
+		          },
+		          'l_1940_1959': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1940 AND yearbuilt <= 1959)',
+		            cartocss: '#layer{polygon-fill: #e6f598; opacity:0.9;}'
+		          },
+		          'l_1960_1979': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1960 AND yearbuilt <= 1979)',
+		            cartocss: '#layer{polygon-fill: #66c2a5;opacity:0.9;}'
+		          },
+		          'l_1980_1999': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1980 AND yearbuilt <= 1999)',
+		            cartocss: '#layer{polygon-fill: #3288bd;opacity:0.9;}'
+		          },
+		          'l_2000_2015': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 2000)',
+		            cartocss: '#layer{polygon-fill: #5e4fa2;opacity:0.9;}'
+		          },
+		          'no_data': {
+		            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt is null)',
+		            cartocss: '#layer{polygon-fill: #696969;opacity:0.9;}'
+		          }
+		        }
+
+		        cartodb.createLayer(map,{
+		            user_name: 'maggielee',
+		            type: 'cartodb',
+		            sublayers: []
+		          	})
+		          
+		          	.addTo(map)
+		          	.done(function(layer){
+						layer.createSubLayer(layers['all_years'])
+
+            			cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['comments'],
+            			{infowindowTemplate: $('#infowindow_template').html()});
+
+
+	            		// When the layers inputs change fire this
+	            		$("input[name='layer']").change(function(){
+              
+	              		// remove whatever layer is there
+
+	              		layer.getSubLayers().forEach(function(sublayer){sublayer.remove()});
+
+	              		// "All years" needs special treatment.
+	              		// if All years is checked, I want to clear all the other checkboxes.
+	              		// so I verify and see if all_years was the last thing clicked.
+	              		// If so, was it clicked on or off?
+	              		// if clicked on, just load the all_years layer and uncheck all other boxes
+
+              			if ($(this).attr("id") == 'all_years') {
+                			if (document.getElementById('all_years').checked) {
+                  				layer.createSubLayer(layers['all_years'])
+
+                  				cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), 
+                  				['comments'],
+                  				{infowindowTemplate: $('#infowindow_template').html()}
+                  				);
+
+                  				document.getElementById("before_1900").checked = false;
+		                		document.getElementById("l_1900_1919").checked = false;
+		                		document.getElementById("l_1920_1939").checked = false;
+		                		document.getElementById("l_1940_1959").checked = false;
+		                		document.getElementById("l_1960_1979").checked = false;
+		                		document.getElementById("l_1980_1999").checked = false;
+		                		document.getElementById("l_2000_2015").checked = false;
+		                		document.getElementById("no_data").checked = false;
+
+                			} else {
+                  			// if all_years was clicked off, don't do anything. Just empty map. 
+                			}
+              				} else {
+                				// but if anything besides "All years" was clicked on or off
+                				// create sublayers for whatever checkboxes are on or off
+
+                				// clear the "all years checkbox"
+                				document.getElementById("all_years").checked = false;
+
+                				// and create the maps for every layer that is checked
+               					$.each($("input[name='layer']:checked"), function(){
+                    				layer.createSubLayer(layers[$(this).attr("id")]);
+                				}); // close $.each
+
+                				var num_sublayers = layer.getSubLayerCount();
+                  
+                				for (var i = 0; i < num_sublayers; i++ ){
+                  					console.log ("number of sublayers is:")
+                  					console.log(i);
+                  
+                  					cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(i), 
+                  					['comments'],
+                  					{infowindowTemplate: $('#infowindow_template').html()}
+                  					);
+                				};
+
+              				}	 // close else statement
+            			}); // close the onchange 
+        			});// close function
+      			}); // close first function
+      
+      //IE 7 & 8 fix?
+
+      if ($.browser.msie && parseInt($.browser.version) < 9) {
+        var inputs = $('.custom-checkbox input');
+        inputs.live('change', function () {
+        var ref = $(this),
+        wrapper = ref.parent();
+        if (ref.is(':checked')) 
+          wrapper.addClass('checked');
+        else wrapper.removeClass('checked');
+        });
+          inputs.trigger('change');
+        }
+
+      </script>
+
+    	
+
+    	</div> <!-- close div.map -->
+
+
+
     </body>
 </html>
