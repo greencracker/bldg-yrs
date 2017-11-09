@@ -132,7 +132,7 @@
              				</div>
                			<div class="cartodb-popup-content">
                   			<h4>Year built </h4>
-                  			<p>{{ comments }}</p>
+                  			<p></p>
                			</div>
            		</div>
          		<div class="cartodb-popup-tip-container"></div>
@@ -160,13 +160,19 @@
 
 		        // add the pins 
 
-		        {% for obj in object_list %}
-		        	var marker = L.marker([ {{ obj.x }}, {{ obj.y }}]).addTo(map);
+		        
+		        	var marker = L.marker([ 33.75, -84.4]).addTo(map);
 		        	marker.bindPopup(
-                        '<a href="{{ obj.id }}/">{{ obj.name }}</a>'
+                        '<a href="1/">Lorem Building</a>'
                     );
 
-		        {% endfor %}
+		        
+		        	var marker = L.marker([ 33.76, -84.39]).addTo(map);
+		        	marker.bindPopup(
+                        '<a href="2/">Ipsum Building</a>'
+                    );
+
+		        
 
 
 
