@@ -158,15 +158,15 @@
 		        }).addTo(map);
 
 
-		        // add the pins 
+		        // // add the pins 
 
-		        {% for obj in object_list %}
-		        	var marker = L.marker([ {{ obj.x }}, {{ obj.y }}]).addTo(map);
-		        	marker.bindPopup(
-                        '<a href="{{ obj.id }}/">{{ obj.name }}</a>'
-                    );
+		        // {% for obj in object_list %}
+		        // 	var marker = L.marker([ {{ obj.x }}, {{ obj.y }}]).addTo(map);
+		        // 	marker.bindPopup(
+          //               '<a href="{{ obj.id }}/">{{ obj.name }}</a>'
+          //           );
 
-		        {% endfor %}
+		        // {% endfor %}
 
 
 
