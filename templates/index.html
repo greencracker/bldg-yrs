@@ -125,7 +125,7 @@
 			    </ul>
 	      	</aside>
 
-	      	<script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.14/cartodb.js">
+	      	<script src="{{ url_for('static', filename='cartodb.js') }}">
       		</script>	
 
       		<script type="infowindow/html" id="infowindow_template">
@@ -229,6 +229,9 @@
 
 
 	            		// When the layers inputs change fire this
+
+	            		// TO DO: Close any popups that are popped up
+
 	            		$("input[name='layer']").change(function(){
               
 	              		// remove whatever layer is there
