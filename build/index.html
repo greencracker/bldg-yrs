@@ -6,22 +6,24 @@
         <link rel="shortcut icon" href="https://cartodb.com/assets/favicon.ico" />
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
        
-
-        <!-- <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css" /> -->
-        <link rel="stylesheet" href="static/cartodb.css" />
+       	<link rel="stylesheet" href="static/cartodb.css" />
         <link rel="stylesheet" href="static/leaflet-control-fullscreen.css" />
-
-<!--         <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' /> -->
 
     </head>
     <body>
-        <div>
-        	<h1>DRAFT2</h1>
-        		<p>Atlanta's young, as far as cities go. It was founded Dec. 29, 1847. </p>
-        		<p>Not long after the Civil War, Atlanta started to grow outward from Downtown. Use the filters on the right to see what was built in which decade. Or click on an individual building to see when it was built.</p>
-        		<p>Despite its young age, Atlanta still has some must-see architecture. We asked **** for what they would show visitos and pinned those on the map.</p>
+        <div id="intro-text">
+        	<h1>DRAFT Atlanta's must-see buildings</h1>
+        		<p>Not yet tested with IE</p>	
+        		<p>Founded only on Dec. 29, 1847, Atlanta's fairly young.</p>
         		
-        		
+        		<p>[DRAFT TEXT TBC] More than 100 years ago, Atlanta's suburbs expanded from Downtown first toward Inman Park and West End. English Avenue, Vine City, Buckhead and dozens of other suburbs followed, generally along streetcar lines, then streets for cars.</p>
+
+        		<p>And while Atlanta does knock down a lot of its buildings, some must-see places still stand.</p>
+
+        		<p>More than enough older buildings — and records — exist to show the direction of that growth. Tax records, while imperfect, do often include a building's construction year, which is mapped here to show the broad outline of the city's history.</p>
+
+        		<p>And we also asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything.</p>
+		
         </div>
         <div id="map">
         	<aside class="layers">
@@ -120,7 +122,7 @@
 			      	</li>
 
 			      	<li>
-			        	<!-- Need full path here? -->
+			        	<!-- fix this -->
 			        	<a href="sources.html">FAQ & Sources</a>
 			      	</li>
 
@@ -130,20 +132,8 @@
 	      	<script src="static/cartodb.js">
       		</script>	
 
-      		<script type="infowindow/html" id="infowindow_template">
-      			<div class="cartodb-popup v2" style="max-width:100px">
-        			<a href="#close" class="cartodb-popup-close-button close">x</a>
-         				<div class="cartodb-popup-content-wrapper">
-           					<div class="cartodb-popup-header">
-             				</div>
-               			<div class="cartodb-popup-content">
-                  			<h4>Year built </h4>
-                  			<p></p>
-               			</div>
-           		</div>
-         		<div class="cartodb-popup-tip-container"></div>
-      			</div>
-    		</script>
+
+
 
     		<script src="static/Leaflet.fullscreen.min.js"></script>
 
@@ -163,25 +153,6 @@
 			        var basemap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 			            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 			        }).addTo(map);
-
-
-			        // add the pins 
-
-			        // 
-			        // 	var marker = L.marker([ 33.75, -84.4]).addTo(map);
-			        // 	marker.bindPopup(
-	          //               '<a href="1/">Lorem Building</a>'
-	          //           );
-
-			        // 
-			        // 	var marker = L.marker([ 33.76, -84.39]).addTo(map);
-			        // 	marker.bindPopup(
-	          //               '<a href="2/">Ipsum Building</a>'
-	          //           );
-
-			        // 
-
-
 
 			        // Layers definition
 			        var layers = {
@@ -328,7 +299,9 @@
     	
 
     </div> <!-- close div.map -->
-
+    <div id="text-after-map">
+    	TEST
+    </div> <!-- close div.text-after-map -->
 
 
     </body>
