@@ -300,19 +300,37 @@
 
         <p>We asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything.</p>
     </div> <!-- close div.text-after-map -->
-    <table>
-    {% for obj in object_list %}
+    
+    
+    <table border=0 cellpadding=7>
+<!--     	<tr>
+    		<th>Building name</th>
+    		<th>Photo</th>
+    		<th>Description</th>
+    	</tr> -->
+
+   {% for obj in object_list %}
+   		<tr><td><hr></td></tr>
 
     	<tr>
-    		<td><img src= "{{obj.img_url}}" height="200px" width="200px" align="left"></td>
-    		<td><a href="{{obj.map_url}}" target="_blank"><img src= "{{obj.map_pic}}" height="200px" width="200px" align="left"></a></td>
-    		<td text-align="left"><h1>{{ obj.name }}</h1><br>{{ obj.address }}</td>		
+    		<td>
+    			<h1>{{ obj.name }}</h1><br>{{ obj.address }}
+    		</td>
     	</tr>
-    		<td>{{ obj.description }}</td>
+
     	<tr>
-
+    		<td>
+    			<a href="{{obj.img_url}}" target="_blank"><img src= "{{obj.img_url}}" height="200px" width="200px" align="left"></a>
+    			<a href="{{obj.map_url}}" target="_blank"><img src= "{{obj.map_pic}}" height="200px" width="200px" align="left"></a>
+    		</td>
     	</tr>
-
+    				
+    	<tr>
+    		<td>
+    			{{ obj.description }}
+    		</td>
+    	</tr>
+    
     {% endfor %}
 
 	</table>
