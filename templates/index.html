@@ -11,19 +11,15 @@
 
     </head>
     <body>
-        <div id="intro-text">
-        	<h1>DRAFT Atlanta's must-see buildings</h1>
+        <div class="article-text">
+        	<h1>Atlanta's must-see buildings (DRAFT)</h1>
         		<p>Not yet tested with IE</p>	
         		<p>Founded only on Dec. 29, 1847, Atlanta's fairly young.</p>
         		
         		<p>[DRAFT TEXT TBC] More than 100 years ago, Atlanta's suburbs expanded from Downtown first toward Inman Park and West End. English Avenue, Vine City, Buckhead and dozens of other suburbs followed, generally along streetcar lines, then streets for cars.</p>
 
-        		<p>And while Atlanta does knock down a lot of its buildings, some must-see places still stand.</p>
-
         		<p>More than enough older buildings — and records — exist to show the direction of that growth. Tax records, while imperfect, do often include a building's construction year, which is mapped here to show the broad outline of the city's history.</p>
-
-        		<p>And we also asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything.</p>
-		
+        	<h1>Atlanta's buildings, by the decades:</h1>
         </div>
         <div id="map">
         	<aside class="layers">
@@ -299,10 +295,26 @@
     	
 
     </div> <!-- close div.map -->
-    <div id="text-after-map">
-    	TEST
+    <div class="article-text">
+    	<p>And while Atlanta does knock down a lot of its buildings, some must-see places still stand.</p>
+
+        <p>We asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything.</p>
     </div> <!-- close div.text-after-map -->
+    <table>
+    {% for obj in object_list %}
 
+    	<tr>
+    		<td><img src= "{{obj.img_url}}" height="200px" width="200px" align="left"></td>
+    		<td><a href="{{obj.map_url}}" target="_blank"><img src= "{{obj.map_pic}}" height="200px" width="200px" align="left"></a></td>
+    		<td text-align="left"><h1>{{ obj.name }}</h1><br>{{ obj.address }}</td>		
+    	</tr>
+    		<td>{{ obj.description }}</td>
+    	<tr>
 
+    	</tr>
+
+    {% endfor %}
+
+	</table>
     </body>
 </html>
