@@ -1,6 +1,6 @@
 * {
-    margin: 2px;
-    padding: 2px;
+    margin: 0px;
+    padding: 0px;
     /*border: 1px solid red !important;*/
 
 }
@@ -15,7 +15,9 @@ body, html {
 #intro-text {
     font-size: 12px;
     font-family: Helvetica,Arial;
-
+    margin: 0px;
+    padding: 0px;
+    color: black;
 }
 
 #map {
