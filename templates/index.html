@@ -129,7 +129,20 @@
       		</script>	
 
 
-
+      		<script type="infowindow/html" id="infowindow_template">
+		      <div class="cartodb-popup v2" style="max-width:100px">
+		        <a href="#close" class="cartodb-popup-close-button close">x</a>
+		         <div class="cartodb-popup-content-wrapper">
+		           <div class="cartodb-popup-header">
+		             </div>
+		               <div class="cartodb-popup-content">
+		                  <h4>Year built </h4>
+		                  <p>{% raw %}{{content.data.comments}}{% endraw %}</p>
+		               </div>
+		           </div>
+		         <div class="cartodb-popup-tip-container"></div>
+		      </div>
+		    </script>
 
     		<script src="{{ url_for('static', filename='Leaflet.fullscreen.min.js') }}"></script>
 
@@ -142,6 +155,7 @@
 			        var map = L.map('map', {
 			            zoomControl: true,
 			            fullscreenControl: true,
+			            scrollWheelZoom: false,
 			            center: [33.75,-84.4],
 			            zoom: 13
 			        });

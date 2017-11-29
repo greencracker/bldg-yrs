@@ -129,7 +129,20 @@
       		</script>	
 
 
-
+      		<script type="infowindow/html" id="infowindow_template">
+		      <div class="cartodb-popup v2" style="max-width:100px">
+		        <a href="#close" class="cartodb-popup-close-button close">x</a>
+		         <div class="cartodb-popup-content-wrapper">
+		           <div class="cartodb-popup-header">
+		             </div>
+		               <div class="cartodb-popup-content">
+		                  <h4>Year built </h4>
+		                  <p>{{content.data.comments}}</p>
+		               </div>
+		           </div>
+		         <div class="cartodb-popup-tip-container"></div>
+		      </div>
+		    </script>
 
     		<script src="static/Leaflet.fullscreen.min.js"></script>
 
@@ -142,6 +155,7 @@
 			        var map = L.map('map', {
 			            zoomControl: true,
 			            fullscreenControl: true,
+			            scrollWheelZoom: false,
 			            center: [33.75,-84.4],
 			            zoom: 13
 			        });
@@ -316,8 +330,8 @@
 
 	    	<tr>
 	    		<td>
-	    			<a href="http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
-	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
+	    			<a href="https://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "https://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
+	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "https://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
 	    		</td>
 	    	</tr>
 	    				
@@ -338,8 +352,8 @@
 
 	    	<tr>
 	    		<td>
-	    			<a href="http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
-	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
+	    			<a href="https://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "https://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
+	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "https://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
 	    		</td>
 	    	</tr>
 	    				
