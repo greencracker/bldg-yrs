@@ -1,0 +1,36 @@
+<html lang="en">
+    <head>
+        <!-- <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+       
+       	<link rel="stylesheet" href="{{ url_for('static', filename='cartodb.css') }}" />
+
+    </head>
+    <body>
+        <div class="article-text">
+        	<p>DRAFT</p>
+
+			<p>// This still requires major reporting, to wit, interview with city GIS or, more likely, county tax commissioner or assessor</p> 
+
+			<p><b>Q: How does the city or county know when a building was built? Are the construction years always right?</b></p>
+
+			<p>A: // Need reporting here.  How did the city assign years to buildings?  Is this ultimately data from the tax commmissioner or assessor?  How does that person know? If it's based on parcels, how to handle one parcel with many buildings? Or one building that crosses several parcels?</p>
+
+			<p>// Why might some be off? For example, the 190 block of Peachtree Street is several buildings, the largest of which is 191. But they show up as one polygon, built in 1929. I *think* it's probably skewing toward the oldest structure on the block and/or considering them as one building for some reason.</p>
+
+			<p><b>Q: There are a lot of buildings without a year, especially universities. Why?</b></p>
+
+			<p>A: // Need reporting here. If data comes ulitmately from tax records, that may explain why property tax-exempt properties like universities are missing data. Maybe explain lack of data on former Fort McPherson as well. </p>
+
+			<p>// Other reasons why data may be missing.</p>
+
+			<p><b>Q: Where did this data come from?</b></p>
+
+			<p>A: This map of building footprints comes courtesy of the city of Atlanta Department of City Planning’s GIS office.</p>
+
+
+        </div> <!-- class="article-text" -->
+    </body>
+</html>
