@@ -12,14 +12,15 @@
     </head>
     <body>
         <div class="article-text">
-        	<h1>The age of Atlanta, and a guide to its monuments (DRAFT)</h1>
-        		<p>Not yet tested with IE</p>	
+        	<h1>The age of Atlanta, mapped, and a guide to its best buildings (DRAFT)</h1>
+        		<p>Not yet tested with all the IE versions</p>	
         		<p>Founded only on Dec. 29, 1847, Atlanta's fairly young.</p>
         		
         		<p>[DRAFT TEXT TBC] More than 100 years ago, Atlanta's suburbs expanded from Downtown first toward Inman Park and West End. English Avenue, Vine City, Buckhead and dozens of other suburbs followed, generally along streetcar lines, then streets for cars.</p>
 
         		<p>More than enough older buildings — and records — exist to show the direction of that growth. Tax records, while imperfect, do often include a building's construction year, which is mapped here to show the broad outline of the city's history.</p>
-        	<h1>Atlanta's buildings, by the decades:</h1>
+        	<hr>
+        	<h2>Atlanta's buildings, by the decades:</h2>
         </div>
         <div id="map">
         	<aside class="layers">
@@ -303,18 +304,14 @@
     
     
     <table border=0 cellpadding=7>
-<!--     	<tr>
-    		<th>Building name</th>
-    		<th>Photo</th>
-    		<th>Description</th>
-    	</tr> -->
+
 
    {% for obj in object_list %}
    		<tr><td><hr></td></tr>
 
     	<tr>
     		<td>
-    			<h1>{{ obj.name }}</h1><br>{{ obj.address }}
+    			<h2>{{ obj.name }}</h2><br>{{ obj.address }}
     		</td>
     	</tr>
 
