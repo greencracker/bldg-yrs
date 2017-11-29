@@ -299,36 +299,37 @@
     	<p><h2>And while Atlanta does knock down a lot of its buildings, some must-see places still stand.</h2></p>
 
         <p>We asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything. Lorem ipsum lorem ipsum</p>
-    </div> <!-- close div.text-after-map -->
+    </div> <!-- close div.article-text -->
     
-    
-    <table border=0 cellpadding=7>
+    <div class="article-text">
+	    <table border=0 cellpadding=7>
 
 
-   {% for obj in object_list %}
-   		<tr><td><hr></td></tr>
+	   {% for obj in object_list %}
+	   		<tr><td><hr></td></tr>
 
-    	<tr>
-    		<td>
-    			<h2>{{ obj.name }}</h2><br>{{ obj.address }}
-    		</td>
-    	</tr>
+	    	<tr>
+	    		<td>
+	    			<h2>{{ obj.name }}</h2><br>{{ obj.address }}
+	    		</td>
+	    	</tr>
 
-    	<tr>
-    		<td>
-    			<a href="{{obj.img_url}}" target="_blank"><img src= "{{obj.img_url}}" height="200px" width="200px" align="left"></a>
-    			<a href="{{obj.map_url}}" target="_blank"><img src= "{{obj.map_pic}}" height="200px" width="200px" align="left"></a>
-    		</td>
-    	</tr>
-    				
-    	<tr>
-    		<td>
-    			{{ obj.description }}
-    		</td>
-    	</tr>
-    
-    {% endfor %}
+	    	<tr>
+	    		<td>
+	    			<a href="{{obj.img_url}}" target="_blank"><img src= "{{obj.img_url}}" height="200px" width="200px" align="left"></a>
+	    			<a href="{{obj.map_url}}" target="_blank"><img src= "{{obj.map_pic}}" height="200px" width="200px" align="left"></a>
+	    		</td>
+	    	</tr>
+	    				
+	    	<tr>
+	    		<td>
+	    			{{ obj.description }}
+	    		</td>
+	    	</tr>
+	    
+	    {% endfor %}
 
-	</table>
+		</table>
+	</div> <!-- close div.article-text -->
     </body>
 </html>
