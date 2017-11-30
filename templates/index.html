@@ -330,22 +330,13 @@
 
 	    	<tr>
 	    		<td>
-	    			<!-- <a href="{{ url_for('static', filename='') }}{{obj.bldg_pic}}" target="_blank"> -->
+	    			<a href="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" target="_blank">
 	    				<img src="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" height="200px" width="200px" align="left">
+	    			</a>
 
-	    				
-
-	    			<!-- </a> -->
-
-	    			<!-- <script src="{{ url_for('static', filename='Leaflet.fullscreen.min.js') }}"></script> -->
-
-	    			<!-- <a href="{{obj.img_url}}" target="_blank">
-	    				<img src="{{ obj.img_url }}" height="200px" width="200px" align="left">
-	    			</a> -->
-
-	    			<!-- <a href="{{obj.map_url}}" target="_blank"> -->
-	    				<!-- <img src=" {{ url_for('static', filename='img/') }}{{obj.map_pic}}" height="200px" width="200px" align="left"> -->
-	    			<!-- </a> -->
+	    			<a href="{{obj.map_url}}" target="_blank">
+	    				<img src=" {{ url_for('static', filename='img/' ~ obj.map_pic) }}" height="200px" width="200px" align="left">
+	    			</a>
 	    		</td>
 	    	</tr>
 
