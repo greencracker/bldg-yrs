@@ -18,7 +18,7 @@
         		
         		<p>[DRAFT TEXT TBC] More than 100 years ago, Atlanta's suburbs expanded from Downtown first toward Inman Park and West End. English Avenue, Vine City, Buckhead and dozens of other suburbs followed, generally along streetcar lines, then streets for cars.</p>
 
-        		<p>More than enough older buildings — and records — exist to show the direction of that growth. Tax records, while imperfect, do often include a building's construction year, which is mapped here to show the broad outline of the city's history.</p>
+        		<p>More than enough older buildings — and records — exist to show when and where that growth happened. We can get an idea from a map of ?roof shapes? combined with tax records drawn from land parcels on which buildings sit, mapped here. (There are some shortcomings; click here to read about them.)</p>
         	<p><h2>Atlanta's buildings, by the decades:</h2></p>
         </div>
         <div id="map">
@@ -157,7 +157,8 @@
 			            fullscreenControl: true,
 			            scrollWheelZoom: false,
 			            center: [33.75,-84.4],
-			            zoom: 13
+			            zoom: 12,
+			            fitBounds: [[33.650824, -84.536316], [33.888559, -84.299080]]
 			        });
 
 			        var basemap = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
@@ -217,6 +218,9 @@
 	            			cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['comments'],
 	            			{infowindowTemplate: $('#infowindow_template').html()});
 
+
+	            			// TO DO:
+	            			// map.fitBounds([insert lat longs for the southwest and northeast corners here])
 
 		            		// When the layers inputs change fire this
 
