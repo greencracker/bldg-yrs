@@ -317,7 +317,6 @@
     <div class="article-text">
 	    <table border=0 cellpadding=7>
 
-
 	   {% for obj in object_list %}
 	   		<tr><td><hr></td></tr>
 
@@ -329,15 +328,20 @@
 
 	    	<tr>
 	    		<td>
-	    			<a href="{{obj.img_url}}" target="_blank">
-	    				<img src="{{ obj.img_url }}" height="200px" width="200px" align="left">
-	    			</a>
+	    			<!-- <a href="{{ url_for('static', filename='') }}{{obj.bldg_pic}}" target="_blank"> -->
+	    				<img src=" {{ url_for('static', filename='img/') }}{{obj.bldg_pic}}" height="200px" width="200px" align="left">
+	    			<!-- </a> -->
 
-	    			<a href="{{obj.map_url}}" target="_blank">
-	    				<img src="{{ obj.map_pic }}" height="200px" width="200px" align="left">
-	    			</a>
+	    			<!-- <a href="{{obj.img_url}}" target="_blank">
+	    				<img src="{{ obj.img_url }}" height="200px" width="200px" align="left">
+	    			</a> -->
+
+	    			<!-- <a href="{{obj.map_url}}" target="_blank"> -->
+	    				<!-- <img src=" {{ url_for('static', filename='img/') }}{{obj.map_pic}}" height="200px" width="200px" align="left"> -->
+	    			<!-- </a> -->
 	    		</td>
 	    	</tr>
+
 	    				
 	    	<tr>
 	    		<td>
@@ -346,6 +350,8 @@
 	    	</tr>
 	    
 	    {% endfor %}
+
+
 
 		</table>
 	</div> <!-- close div.article-text -->
