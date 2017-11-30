@@ -26,10 +26,10 @@ p {
 
 #map {
   margin: 10px;
-  height: 400px;
+  /*height: 400px;*/
   position: relative;
   box-sizing: border-box;
-  padding-top: 56.25%;
+  padding-top: 46.25%;
 }
 
 

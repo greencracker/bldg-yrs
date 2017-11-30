@@ -219,12 +219,7 @@
 	            			{infowindowTemplate: $('#infowindow_template').html()});
 
 
-	            			// TO DO:
-	            			// map.fitBounds([insert lat longs for the southwest and northeast corners here])
-
 		            		// When the layers inputs change fire this
-
-		            		
 
 		            		$("input[name='layer']").change(function(){
 
@@ -277,8 +272,8 @@
 	                				var num_sublayers = layer.getSubLayerCount();
 	                  
 	                				for (var i = 0; i < num_sublayers; i++ ){
-	                  					console.log ("number of sublayers is:")
-	                  					console.log(i);
+	                  					// console.log ("number of sublayers is:")
+	                  					// console.log(i);
 	                  
 	                  					cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(i), 
 	                  					['comments'],
@@ -334,8 +329,13 @@
 
 	    	<tr>
 	    		<td>
-	    			<a href="http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
-	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
+	    			<a href="/static/generic-building-square.jpeg" target="_blank">
+	    				<img src="/static/generic-building-square.jpeg" height="200px" width="200px" align="left">
+	    			</a>
+
+	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank">
+	    				<img src="/static/generic-map-square.jpg" height="200px" width="200px" align="left">
+	    			</a>
 	    		</td>
 	    	</tr>
 	    				
@@ -356,8 +356,13 @@
 
 	    	<tr>
 	    		<td>
-	    			<a href="http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-building-square.jpeg" height="200px" width="200px" align="left"></a>
-	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank"><img src= "http://maggielee.net/wp-content/uploads/2017/11/generic-map-square.jpg" height="200px" width="200px" align="left"></a>
+	    			<a href="/static/generic-building-square.jpeg" target="_blank">
+	    				<img src="/static/generic-building-square.jpeg" height="200px" width="200px" align="left">
+	    			</a>
+
+	    			<a href="https://maggielee.carto.com/viz/4ffded99-a16c-4cfe-9e02-a2a4c9958d35/public_map" target="_blank">
+	    				<img src="/static/generic-map-square.jpg" height="200px" width="200px" align="left">
+	    			</a>
 	    		</td>
 	    	</tr>
 	    				
