@@ -20,7 +20,7 @@
         		<p> More than 100 years ago, Atlanta's suburbs expanded from Downtown first toward X, Y, Z. Dozens of other suburbs followed, generally along streetcar lines, then streets for cars. .... More recently, some big new developments have come back Downtown.</p>
 
         		<p>Enough buildings and property tax records exist to show when and where Atlanta grew — and has been rebuilt. This map uses building footprints, combined with tax records about the land parcels on which buildings sit, to show those trends. (There are some shortcomings — there wasn't a 50-story skyscraper built Downtown in 1929. <a href="{{ url_for('static', filename='faq.html') }}">Click here to read the data FAQ.)</a></p>
-        	<p><h2>Atlanta's buildings, by the decades:</h2></p>
+        	<p><h2>Atlanta's buildings, by the decades, not mobile ready:</h2></p>
         </div>
         <div id="map">
         	<aside class="layers">
@@ -118,8 +118,6 @@
 			        	</span>No data
 			      	</li>
 
-			      	<li>
-			        	<!-- fix this -->
 			        	<a href="{{ url_for('static', filename='faq.html') }}">FAQ & Sources</a>
 			      	</li>
 
@@ -314,39 +312,32 @@
 
         <p>We asked **** architects/historians/etc to list their must-see buildings in Atlanta for any reason: design, history, a sense of place, anything. Lorem ipsum lorem ipsum</p>
 
-        <p> test </p>
-    </div> <!-- close div.article-text -->
-    
-    <div class="article-text">
-	    <table border=0 cellpadding=7>
+        <p> lorem</p>
+
+        <p>To do: add some margins between entries</p>
+   
 
 	   {% for obj in object_list %}
-	   		<tr><td><hr></td></tr>
 
-	    	<tr>
-	    		<td>
-	    			<h2>{{ obj.name }}</h2><br>{{ obj.address }}
-	    		</td>
-	    	</tr>
+		   <div><hr></div>
 
-	    	<tr>
-	    		<td>
-	    			<a href="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" target="_blank">
-	    				<img src="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" height="200px" width="200px" align="left">
-	    			</a>
+		   <div style="text-align:center"><h2>{{ obj.name }}</h2><br>{{ obj.address }}</div>
 
-	    			<a href="{{obj.map_url}}" target="_blank">
-	    				<img src=" {{ url_for('static', filename='img/' ~ obj.map_pic) }}" height="200px" width="200px" align="left">
-	    			</a>
-	    		</td>
-	    	</tr>
+		   <div style="text-align:center">
+		   		<a href="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" target="_blank">
+		    		<img src="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" height="200px" width="200px" float="left">
+		    	</a>
 
-	    				
-	    	<tr>
-	    		<td>
-	    			{{ obj.description }}
-	    		</td>
-	    	</tr>
+		    	<a href="{{obj.map_url}}" target="_blank">
+		    		<img src=" {{ url_for('static', filename='img/' ~ obj.map_pic) }}" height="200px" width="200px" float="left">
+		    	</a>
+
+		   </div>
+
+		   <div>
+		   		{{ obj.description }}
+		   </div>
+
 	    
 	    {% endfor %}
 

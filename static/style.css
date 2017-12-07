@@ -25,11 +25,12 @@ p {
 }
 
 #map {
-  margin: 10px;
+  margin: auto;
   /*height: 400px;*/
   position: relative;
   box-sizing: border-box;
-  padding-top: 56.25%;
+  max-width: 600px;
+  padding-top: 71.25%;
 }
 
 
@@ -156,5 +157,6 @@ span {
     top: -5px;
     zoom: 1;
 }
+
 
 
