@@ -49,7 +49,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          	<input type="checkbox" id="l_1900_1919" name="layer">
-			          		<span class="box" style="background-color:#f46d43;">
+			          		<span class="box" style="background-color:#F18273;">
 			            		<span class="tick">
 			            		</span>
 			         		</span>
@@ -60,7 +60,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          	<input type="checkbox" id="l_1920_1939" name="layer">
-			          		<span class="box" style="background-color:#fdae61;">
+			          		<span class="box" style="background-color:#F5B27E;">
 			            		<span class="tick">
 			            		</span>
 			          		</span>
@@ -70,7 +70,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          	<input type="checkbox" id="l_1940_1959" name="layer">
-			          		<span class="box" style="background-color:#e6f598;">
+			          		<span class="box" style="background-color:#ECE1A1;">
 			            		<span class="tick">
 			            		</span>
 			          		</span>
@@ -80,7 +80,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          	<input type="checkbox" id="l_1960_1979" name="layer">
-			          		<span class="box" style="background-color:#66c2a5;">
+			          		<span class="box" style="background-color:#9ACA8B;">
 			            		<span class="tick">
 			            		</span>
 			          		</span>
@@ -90,7 +90,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          	<input type="checkbox" id="l_1980_1999" name="layer">
-			          		<span class="box" style="background-color:#3288bd;">
+			          		<span class="box" style="background-color:#15B188;">
 			            		<span class="tick">
 			            		</span>
 			          		</span>
@@ -100,7 +100,7 @@
 			      	<li class="layer">
 			        	<span class="custom-checkbox">
 			          		<input type="checkbox" id="l_2000_2015" name="layer">
-			          		<span class="box" style="background-color:#5e4fa2;">
+			          		<span class="box" style="background-color:#009592;">
 			            		<span class="tick">
 			            		</span>
 			          		</span>
@@ -169,7 +169,7 @@
 			        var layers = {
 			          'all_years': {
 			            sql: 'SELECT * FROM building_footprints_small',
-			            cartocss: '#layer{polygon-fill: #696969;}#layer[yearbuilt < 1900] {polygon-fill: #9e0142;}#layer[yearbuilt >= 1900][yearbuilt <= 1919] {polygon-fill: #f46d43;}#layer[yearbuilt >= 1920][yearbuilt <= 1939] {polygon-fill: #fdae61;}#layer[yearbuilt >= 1940][yearbuilt <= 1959] {polygon-fill: #e6f598;}#layer[yearbuilt >= 1960][yearbuilt <= 1979] {polygon-fill: #66c2a5;}#layer[yearbuilt >= 1980][yearbuilt <= 1999] {polygon-fill: #3288bd;}#layer[yearbuilt >= 2000] {polygon-fill: #5e4fa2;}'
+			            cartocss: '#layer{polygon-fill: #696969;}#layer[yearbuilt < 1900] {polygon-fill: #9e0142;}#layer[yearbuilt >= 1900][yearbuilt <= 1919] {polygon-fill: #F18273;}#layer[yearbuilt >= 1920][yearbuilt <= 1939] {polygon-fill: #F5B27E;}#layer[yearbuilt >= 1940][yearbuilt <= 1959] {polygon-fill: #ECE1A1;}#layer[yearbuilt >= 1960][yearbuilt <= 1979] {polygon-fill: #9ACA8B;}#layer[yearbuilt >= 1980][yearbuilt <= 1999] {polygon-fill: #15B188;}#layer[yearbuilt >= 2000] {polygon-fill: #009592;}'
 			          },
 			          'before_1900': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt < 1900)',
@@ -177,27 +177,27 @@
 			          },
 			          'l_1900_1919': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1900 AND yearbuilt <= 1919)',
-			            cartocss: '#layer{polygon-fill: #f46d43; opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #F18273; opacity:0.9;}'
 			          },
 			          'l_1920_1939': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1920 AND yearbuilt <= 1939)',
-			            cartocss: '#layer{polygon-fill: #fdae61; opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #F5B27E; opacity:0.9;}'
 			          },
 			          'l_1940_1959': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1940 AND yearbuilt <= 1959)',
-			            cartocss: '#layer{polygon-fill: #e6f598; opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #ECE1A1; opacity:0.9;}'
 			          },
 			          'l_1960_1979': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1960 AND yearbuilt <= 1979)',
-			            cartocss: '#layer{polygon-fill: #66c2a5;opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #9ACA8B;opacity:0.9;}'
 			          },
 			          'l_1980_1999': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 1980 AND yearbuilt <= 1999)',
-			            cartocss: '#layer{polygon-fill: #3288bd;opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #15B188;opacity:0.9;}'
 			          },
 			          'l_2000_2015': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt >= 2000)',
-			            cartocss: '#layer{polygon-fill: #5e4fa2;opacity:0.9;}'
+			            cartocss: '#layer{polygon-fill: #009592;opacity:0.9;}'
 			          },
 			          'no_data': {
 			            sql: 'SELECT * FROM building_footprints_small WHERE (yearbuilt is null)',
