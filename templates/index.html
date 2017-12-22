@@ -21,17 +21,17 @@
 
         		<p>The city hit a growth spurt as the 19th century became the 20th, and streetcars and automobiles arrived. More folks began to build homes and shops in areas like Edgewood, Kirkwood and West End. With cars, people built yet further out, to places like Home Park, Virginia Highland, Candler Park, Sylvan Hills and Washington Park.</p>
 
-        		<p>We can get a visual idea of when and where Atlantans have built buildings large and small, by checking out this map, which matches a construction year to tens of thousands of homes, offices, shops and other buildings.</p>
+        		<p>We can get a visual idea of when and where Atlantans have built and rebuilt, by checking out this map, which matches a construction year to tens of thousands of homes, offices, shops and other buildings.</p>
 
-        		<p>Now, the data is not perfect — it's thousands of building footprint sketches and construction years that are knitted together from two counties and several sources like property tax records and somewhat crude aerial photography. <a href="{{ url_for('static', filename='faq.html') }}">Read the FAQ and limitations of the data here.</a></p>
+        		<p>Take the data with a little grain of salt, however. It comes from hundreds of thousands of records created, and sometimes lost or damaged over more than 100 years. It's years of deeds, tax records, maps, even aerial photography, gathered by humans and computers in two counties for generations. Especially where buildings are very old or close together, there are some shortcomings. <a href="{{ url_for('static', filename='faq.html') }}">Read the data FAQ here.</a></p>
 
-        		<p>We also asked some of Atlanta's top architects, historians and activists to pick out some of the buildings they think are most worth seeing — for beauty, for history, for any reason. Those follow the map.</p>
+        		<p>We also asked some Atlanta architects, historians and activists to pick out some of the buildings they think are most worth seeing — for beauty, for history, for any reason. Those follow the map.</p>
 
         		 
-        	<p><h2>Atlanta's buildings, by the decades:</h2></p>
+        	<p><h2>In some parts of Atlanta, newer construction has replaced homes which were built as the city expanded from Downtown.</h2></p>
         </div>
         <div id="map">
-        	<aside class="layers">
+        	<aside class="layers">s
         		<h2>Filter:</h2>
 			    <ul>
 			    	<li class="layer">
@@ -317,27 +317,46 @@
     </div> <!-- close div.map -->
     <div class="article-text">
 
+
    
 
 	   {% for obj in object_list %}
 
 		   <div><hr></div>
 
-		   <div style="text-align:center"><h2>{{ obj.name }}</h2><br>{{ obj.address }}</div>
+		   <div style="text-align:center"><h2>{{ obj.name }}</h2>
+		   	<br><p>{{ obj.neighborhood }}</p>
+		   	<br>
+		   		{% if obj.map_link %}
+		   			<p><a href="{{ obj.map_link}}" target="_blank">{{ obj.address }}</a></p>
+		   		{% else %}
+		   			<p>{{ obj.address|safe }}</p>
+		   		{% endif %}
+		   </div>
 
 		   <div style="text-align:center">
 		   		<a href="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" target="_blank">
 		    		<img src="{{ url_for('static', filename='img/' ~ obj.bldg_pic) }}" height="200px" width="200px" float="left">
 		    	</a>
-
-		    	<a href="{{obj.map_url}}" target="_blank">
-		    		<img src=" {{ url_for('static', filename='img/' ~ obj.map_pic) }}" height="200px" width="200px" float="left">
-		    	</a>
-
 		   </div>
 
 		   <div>
-		   		{{ obj.description }}
+		   		 {{ obj.description|safe }}
+		   </div>
+
+		   <div>
+		   		{% if obj.bldg_info_url %}
+					<p><a href="{{ obj.bldg_info_url }}" target="_blank">More info</a></p>
+				{% else %}
+					{{ obj.bldg_info_multi|safe }}
+				{% endif %}
+		   </div>
+
+		   <div>
+		   		<p>GALLERY LINK PLACEHOLDER</p>
+		   		{% if obj.bldg_gallery %}
+		   			<p><a href="{{ obj.bldg_gallery }}" target="_blank">Gallery</a></p>
+		   		{% endif %}
 		   </div>
 
 	    
