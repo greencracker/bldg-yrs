@@ -1,17 +1,12 @@
 * {
     margin: 0px;
     padding: 0px;
-    /*border: 1px solid red !important;*/
-
 }
 body, html {
     min-height: 100%;
     height: 100%;
     font: 15px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /*font-size: 14px;
-    font-family: Helvetica,Arial;*/
     color: black;
-    line-height: 1.4em;
     margin: 2px 2px 2px 2px;
 }
 
@@ -20,19 +15,13 @@ p {
 }
 
 .article-text {
-    /*ont-size: 14px;
-    font-family: Helvetica,Arial;*/
-    /*margin: 5px;*/
     font: 14px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /*padding: 10px;*/
     color: black;
-/*    margin: 10px 0 .5em 6px;*/
     line-height: 1.4em;
 }
 
 #map {
   margin: auto;
-  /*height: 400px;*/
   position: relative;
   box-sizing: border-box;
   /*max-width: 600px;*/
